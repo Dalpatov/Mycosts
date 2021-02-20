@@ -1,0 +1,42 @@
+body{
+    background-image: url("https://regnum.ru/uploads/pictures/news/2018/10/03/regnum_picture_15385669132464517_normal.png")
+}
+.main-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+#content-page {
+    display: flex;
+    align-items: center;
+   
+    flex-direction: column
+}
+.but{
+    height: 20px;
+    width: 20px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+.mark-container {
+    display:flex;
+    align-items: center;
+}
+.cost-container {
+    display:flex;
+    align-items: center;
+}
+.cost-container p {
+     justify-content: center;
+}
+
+.lesion{
+    display:flex;
+    justify-content: flex-end;
+    margin-right: 150px;
+
+}
