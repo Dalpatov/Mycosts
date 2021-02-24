@@ -21,20 +21,28 @@ window.onload = async function init() {
   render();
 }
 
+updateText = (event) =>{
+  textUP = event.target.value;
+}
+updateValue = (event) =>{
+  valueUP = event.target.value;
+}
+
+
 onClick = async ()=>{
-  mainArr.push({
-    text: textUP,
-    value: valueUP
-  });
+  // mainArr.push({
+  //   text: textUP,
+  //   value: valueUP
+  // });
   const resp = await fetch("http://localhost:8000/createTask", {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
       "Access-Control-Allow-Origin": "*"
     },
-    body: JSON.stringify({
-      text: valueInput,
-      isCheck: false
+    body: JSON.stringify ({
+      text: textUP,
+      value: valueUP
     })
   });
   let result = await resp.json();
@@ -46,12 +54,7 @@ onClick = async ()=>{
   render();
 }
 
-updateText = (event) =>{
-  textUP = event.target.value;
-}
-updateValue = (event) =>{
-  valueUP = event.target.value;
-}
+
 
 render = () =>{
     summCost = 0;
@@ -75,14 +78,12 @@ render = () =>{
         container.id = `mark - ${index}`;
         container.className = 'mark-container';
 
-      let costCont = document.createElement("div");
-        costCont.className = 'cost-container';
-        container.appendChild(costCont);
-
+ 
         if (index === indexEdit){
           let inpText = document.createElement('input');
           inpText.type = "text";
-          inpText.value = recText ;         
+          inpText.value = recText ;  
+
           inpText.addEventListener('change',updateNewText);
           container.appendChild(inpText);  
           
@@ -95,36 +96,55 @@ render = () =>{
         }else{
           let text = document.createElement("p");
           text.innerText = `${index + 1}) ${item.text}`;
-          costCont.appendChild(text);
+          text.className = "txt-location";
+          container.appendChild(text);
 
-          let cash = document.createElement("p");
+          let cash = document.createElement("span");
           cash.innerText = `${item.value} руб.`;
-          costCont.appendChild(cash);
+          cash.className = "cash-location";
+          container.appendChild(cash);
         }
+
+             let imgCont = document.createElement("div");
+        imgCont.className = 'cost-container';
+        container.appendChild(imgCont);
+
 
         if(indexEdit === index){
           let imageSave = document.createElement('img');
-          imageSave.src = "https://image.flaticon.com/icons/png/512/61/61807.png";
+          imageSave.src = "file:///home/user/Downloads/floppy-disk.svg";
           imageSave.className = "but";
-          container.appendChild(imageSave);
+          imgCont.appendChild(imageSave);
           imageSave.onclick = function(){
           saveOnClick(index);
-        };
+          }
+          
         
+          let imageAbort = document.createElement('img');
+          imageAbort.src = "file:///home/user/Downloads/x-button.svg";
+          imageAbort.className = "but";
+          imgCont.appendChild(imageAbort);
+          imageAbort.onclick = function(){
+           indexEdit = index;
+          mainArr[indexEdit].value = recValue;
+          // mainArr[indexEdit].text = recText;
+          //  indexEdit = null;
+        render()
+        };
                   
         }else{
           let imageEdit = document.createElement('img');
-          imageEdit.src = "https://image.flaticon.com/icons/png/512/61/61456.png";
+          imageEdit.src = "file:///home/user/Downloads/edit.svg";
           imageEdit.className = "but";
-          container.appendChild(imageEdit);
+          imgCont.appendChild(imageEdit);
           imageEdit.onclick = function(){
           editOnClick(index);
         }
                  
           let imageDelete = document.createElement('img');
-          imageDelete.src = "https://image.flaticon.com/icons/png/512/61/61848.png";
+          imageDelete.src = "file:///home/user/Downloads/delete.svg";
           imageDelete.className = "but";
-          container.appendChild(imageDelete);
+          imgCont.appendChild(imageDelete);
           imageDelete.onclick = function(){
           delOnClick(index);
       }
@@ -135,7 +155,7 @@ render = () =>{
     delOnClick = async (index) =>{
       // mainArr.splice(index, 1);
       let allID = mainArr[index]._id;
-      const resp = await fetch(`http://localhost:8000/deleteCost?_id=${allID}`, {
+      const resp = await fetch(`http://localhost:8000/deleteTask?_id=${allID}`, {
         method: "DELETE",
     });
     let result = await resp.json();
@@ -161,7 +181,7 @@ render = () =>{
       render();
    }
     
-    saveOnClick = async () =>{
+    saveOnClick = async (index) =>{
       const resp = await fetch("http://localhost:8000/updateTask", {
         method: "PATCH",
         headers: {
@@ -169,14 +189,15 @@ render = () =>{
           "Access-Control-Allow-Origin": "*"
         },
         body: JSON.stringify({
-          _id: mainArr[index]._id,
+          _id: mainArr[indexEdit]._id,
            text: mainArr[indexEdit].text,
            value: mainArr[indexEdit].value
         })
       });
       let result = await resp.json();
-      indexEdit = null;
       mainArr = result.data;
+      indexEdit = null;
+     
       localStorage.setItem('tasks', JSON.stringify(mainArr));
       render()
     }
