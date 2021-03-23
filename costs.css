@@ -1,6 +1,10 @@
 body{
-    background-image: url("https://lh3.googleusercontent.com/proxy/Kz6j5SvmZx7d3XQnzQLgmlT1AhqOW6gOJqqP5WMpF8ee3qZeH4Au8SvVVAZI5UUpfdjYrMbBUteecasIw-RvLn5LFAT8hvKT4jGwBpVdKMQ");
-    background-size: 100%;
+    background-image: url("https://topvoyager.com/wp-content/uploads/2019/10/japan-6-1.jpg");
+    background-size: 100%; 
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
 }
 .main-div {
     display: flex;
@@ -18,7 +22,7 @@ body{
 
 }
 #content-page {
-    height: 470px;
+    height: 550px;
     overflow-y: auto;
     display: flex;
     align-items: center;
@@ -55,7 +59,7 @@ body{
 }
 
 .lesion{
-    background-color: violet;
+    /* background-color: violet; */
     display:flex;
     justify-content: flex-end;
     margin-right: 150px;
@@ -86,7 +90,24 @@ span{
 .txt-location{
     width: 300px;
     word-wrap: break-word;
+    height: 25px;
+    font-size: large;   
+}
+.cash-location{
+    width: 300px;
+    word-wrap: break-word;
+    height: 25px;
+    font-size: large;   
 }
 input{
     outline:none;
+}
+
+.newinptxt{
+    height: 25px;
+    font-size: large;
+}
+.newinpval{
+    height: 25px;
+    font-size: large; 
 }
