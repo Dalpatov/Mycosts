@@ -5,6 +5,8 @@ let inputText = null;
 let inputValue = null;
 let indexEdit = null;
 let summCost = 0;
+let flagtxt=null;
+
 
 window.onload = async function init() {
   
@@ -17,32 +19,7 @@ window.onload = async function init() {
   });
   let result = await resp.json();
   mainArr = result.data;
-  // localStorage.setItem('tasks', JSON.stringify(mainArr));
-  render();
-}
-
-onClick = async ()=>{
-  mainArr.push({
-    text: textUP,
-    value: valueUP
-  });
-  const resp = await fetch("http://localhost:8000/createTask", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-      "Access-Control-Allow-Origin": "*"
-    },
-    body: JSON.stringify({
-      text: valueInput,
-      isCheck: false
-    })
-  });
-  let result = await resp.json();
-  mainArr = result.data;
-    valueUP = null;
-    textUP = "";
-    inputText.value = "";
-    inputValue.value = null;
+  //  localStorage.setItem('tasks', JSON.stringify(mainArr));
   render();
 }
 
@@ -53,11 +30,42 @@ updateValue = (event) =>{
   valueUP = event.target.value;
 }
 
-render = () =>{
-    summCost = 0;
-    mainArr.forEach(i => {
-    summCost += Number(i.value)
+onClick = async ()=>{
+  // mainArr.push({
+  //   text: textUP,
+  //   value: valueUP
+  // });
+  
+  const resp = await fetch("http://localhost:8000/createTask", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+      "Access-Control-Allow-Origin": "*"
+    },
+    body: JSON.stringify ({
+      text: textUP,
+      value: valueUP
+    })
   });
+  
+  let result = await resp.json();
+  if(textUP !== "" && textUP !== Number && valueUP !== Number && valueUP !== null ){   
+  valueUP = null;
+  textUP = "";
+  inputText.value = "";
+  inputValue.value = null;
+  mainArr = result.data;  
+  render();
+  }else{
+    alert("Ведите данные");
+  }
+}
+
+render = () =>{
+mainArr.forEach(i => {
+    summCost += Number(i.value)
+      });   
+  
      let lession = document.querySelector(".lesion");
      lession.innerText = `Итого: ${summCost} руб.`;
   
@@ -68,63 +76,144 @@ render = () =>{
 
     mainArr.map((item, index) => {
 
-       let recText = item.text;
-       let recValue = item.value;
-      
+      let recText = item.text;
+      let recValue = item.value;
+      summCost = 0;
+     
+  
       let container = document.createElement("div");
-        container.id = `mark - ${index}`;
-        container.className = 'mark-container';
+      container.id = `mark - ${index}`;
+      container.className = 'mark-container';
+
+      let textCont = document.createElement("div");
+      textCont.className = "text-container";
+      container.appendChild(textCont);
 
       let costCont = document.createElement("div");
-        costCont.className = 'cost-container';
-        container.appendChild(costCont);
-
+      costCont.className = "cost-container";
+      container.appendChild(costCont);          
+       
+      
         if (index === indexEdit){
+           if(flagtxt){
+             if(flagtxt === 1){
           let inpText = document.createElement('input');
           inpText.type = "text";
-          inpText.value = recText ;         
+          inpText.value = recText; 
+          inpText.className = "newinptxt"
           inpText.addEventListener('change',updateNewText);
-          container.appendChild(inpText);  
-          
+          textCont.appendChild(inpText); 
+
+          let cash = document.createElement("span");
+          cash.innerText = `${item.value} руб.`;
+          cash.className = "cash-location";          
+          container.appendChild(cash);
+          cash.ondblclick = function(){           
+          indexEdit = index;
+          flagtxt = 2;
+          render();
+          }
+           costCont.appendChild(cash);
+        }else{
           let inpValue = document.createElement("input");
           inpValue.type = "number";
           inpValue.value = recValue;
+          inpValue.className = "newinpval"
           inpValue.addEventListener("change", updateNewValue);
-          container.appendChild(inpValue);
-               
-        }else{
+          costCont.appendChild(inpValue);
+
           let text = document.createElement("p");
           text.innerText = `${index + 1}) ${item.text}`;
-          costCont.appendChild(text);
-
-          let cash = document.createElement("p");
-          cash.innerText = `${item.value} руб.`;
-          costCont.appendChild(cash);
+          text.className = "txt-location";        
+          container.appendChild(text);          
+          text.ondblclick = function(){   
+          indexEdit = index         
+          flagtxt = 1;
+          render()  
         }
+         textCont.appendChild(text);
+        }
+                    
+               
+        }else{
+          let inpText = document.createElement('input');
+          inpText.type = "text";
+          inpText.value = recText; 
+          inpText.className = "newinptxt"
+          inpText.addEventListener('change',updateNewText);
+          textCont.appendChild(inpText); 
+
+          let inpValue = document.createElement("input");
+          inpValue.type = "number";
+          inpValue.value = recValue;
+          inpValue.className = "newinpval"
+          inpValue.addEventListener("change", updateNewValue);
+          costCont.appendChild(inpValue);
+        }
+        }else{
+          
+          let text = document.createElement("p");
+          text.innerText = `${index + 1}) ${item.text}`;
+          text.className = "txt-location";        
+          container.appendChild(text);          
+          text.ondblclick = function(){ 
+          indexEdit = index;           
+          flagtxt = 1;  
+          render()          
+          }
+          textCont.appendChild(text);
+
+          let cash = document.createElement("span");
+          cash.innerText = `${item.value} руб.`;
+          cash.className = "cash-location";          
+          container.appendChild(cash);
+          cash.ondblclick = function(){           
+          indexEdit = index;           
+          flagtxt = 2;  
+          render()          
+          }   
+          costCont.appendChild(cash);       
+          }
+        
+          let imgCont = document.createElement("div");
+          imgCont.className = 'img-container';
+          container.appendChild(imgCont);
+
 
         if(indexEdit === index){
           let imageSave = document.createElement('img');
-          imageSave.src = "https://image.flaticon.com/icons/png/512/61/61807.png";
+          imageSave.src = "file:///home/user/Downloads/floppy-disk.svg";
           imageSave.className = "but";
-          container.appendChild(imageSave);
+          imgCont.appendChild(imageSave);
           imageSave.onclick = function(){
           saveOnClick(index);
+          }
+                  
+          let imageAbort = document.createElement('img');
+          imageAbort.src = "file:///home/user/Downloads/x-button.svg";
+          imageAbort.className = "but";
+          imgCont.appendChild(imageAbort);
+          imageAbort.onclick = function(){            
+          indexEdit = index;
+          mainArr[indexEdit].value = recValue;
+          mainArr[indexEdit].text = recText;
+          indexEdit = -1;
+         render()
         };
-        
                   
         }else{
           let imageEdit = document.createElement('img');
-          imageEdit.src = "https://image.flaticon.com/icons/png/512/61/61456.png";
+          imageEdit.src = "file:///home/user/Downloads/edit.svg";
           imageEdit.className = "but";
-          container.appendChild(imageEdit);
+          imgCont.appendChild(imageEdit);
           imageEdit.onclick = function(){
           editOnClick(index);
         }
                  
           let imageDelete = document.createElement('img');
-          imageDelete.src = "https://image.flaticon.com/icons/png/512/61/61848.png";
+          imageDelete.src = "file:///home/user/Downloads/delete.svg";
           imageDelete.className = "but";
-          container.appendChild(imageDelete);
+          imgCont.appendChild(imageDelete);
           imageDelete.onclick = function(){
           delOnClick(index);
       }
@@ -135,7 +224,7 @@ render = () =>{
     delOnClick = async (index) =>{
       // mainArr.splice(index, 1);
       let allID = mainArr[index]._id;
-      const resp = await fetch(`http://localhost:8000/deleteCost?_id=${allID}`, {
+      const resp = await fetch(`http://localhost:8000/deleteTask?_id=${allID}`, {
         method: "DELETE",
     });
     let result = await resp.json();
@@ -143,40 +232,46 @@ render = () =>{
       render(); 
     }
     
-    editOnClick = (index) =>{
-      indexEdit = index;
-      // localStorage.setItem('tasks', JSON.stringify(mainArr));
+    editOnClick = (index) =>{      
+     indexEdit = index;
+     // localStorage.setItem('tasks', JSON.stringify(mainArr));
       render()
     }
-    
+
     updateNewText = (event)=>{
        mainArr[indexEdit].text = event.target.value; 
+       
       //  localStorage.setItem('tasks', JSON.stringify(mainArr));
-       render();
+       //render();
     }
 
     updateNewValue = (event)=>{
       mainArr[indexEdit].value = event.target.value; 
+      
      //  localStorage.setItem('tasks', JSON.stringify(mainArr));
-      render();
+      // render();
    }
     
-    saveOnClick = async () =>{
+    saveOnClick = async (index) =>{
+      console.log('yes');
+      const body = {
+        _id: mainArr[indexEdit]._id,
+         text: mainArr[indexEdit].text,
+         value: mainArr[indexEdit].value
+      };
+      indexEdit = null;
+      flagtxt = null;
       const resp = await fetch("http://localhost:8000/updateTask", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
           "Access-Control-Allow-Origin": "*"
         },
-        body: JSON.stringify({
-          _id: mainArr[index]._id,
-           text: mainArr[indexEdit].text,
-           value: mainArr[indexEdit].value
-        })
+        body: JSON.stringify(body)
       });
-      let result = await resp.json();
-      indexEdit = null;
-      mainArr = result.data;
+      let result = await resp.json();       
+      mainArr = result.data;      
       localStorage.setItem('tasks', JSON.stringify(mainArr));
       render()
     }
+    
