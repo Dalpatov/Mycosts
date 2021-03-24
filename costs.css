@@ -3,7 +3,7 @@ body{
     background-size: 100%; 
     background-position: center;
     background-size: cover;
-    width: 100%;
+    max-width: 100%;
     height: 100vh;
 }
 .main-div {
@@ -29,6 +29,7 @@ body{
     font-size: large;
     flex-direction: column;
     background:rgba(0, 0, 0, 0.3);
+    
 }
 .but{
     height: 40px;
@@ -53,6 +54,11 @@ body{
 }
 
 .cost-container {
+    display:flex;
+    align-items: center;
+    color: white
+}
+.img-container {
     display:flex;
     align-items: center;
     color: white
@@ -111,3 +117,8 @@ input{
     height: 25px;
     font-size: large; 
 }
+
+/* @media (max-width:320px){
+    
+    
+    } */

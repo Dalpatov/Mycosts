@@ -5,6 +5,8 @@ let inputText = null;
 let inputValue = null;
 let indexEdit = null;
 let summCost = 0;
+let flagtxt=null;
+
 
 window.onload = async function init() {
   
@@ -45,27 +47,25 @@ onClick = async ()=>{
       value: valueUP
     })
   });
+  
   let result = await resp.json();
-  mainArr = result.data;
-  if(textUP === "" || valueUP === null) {
-  alert("введите значения");  
-  }else{
-    valueUP = null;
-    textUP = "";
-    inputText.value = "";
-    inputValue.value = null;
-  }
+  if(textUP !== "" && textUP !== Number && valueUP !== Number && valueUP !== null ){   
+  valueUP = null;
+  textUP = "";
+  inputText.value = "";
+  inputValue.value = null;
+  mainArr = result.data;  
   render();
+  }else{
+    alert("Ведите данные");
+  }
 }
 
-
-
 render = () =>{
-
-    summCost = 0;
-    mainArr.forEach(i => {
+mainArr.forEach(i => {
     summCost += Number(i.value)
-  });
+      });   
+  
      let lession = document.querySelector(".lesion");
      lession.innerText = `Итого: ${summCost} руб.`;
   
@@ -76,69 +76,108 @@ render = () =>{
 
     mainArr.map((item, index) => {
 
-       let recText = item.text;
-       let recValue = item.value;
-      
+      let recText = item.text;
+      let recValue = item.value;
+      summCost = 0;
+     
+  
       let container = document.createElement("div");
-        container.id = `mark - ${index}`;
-        container.className = 'mark-container';
-        let flagtxt=1;
-        let flagcash=1;
-        if(flagtxt===0){
-          let inpText = document.createElement('input');
-          inpText.type = "text";
-          inpText.value = recText; 
-          inpText.className = "newinptxt"
-          inpText.addEventListener('change',updateNewText);
-          container.appendChild(inpText); 
-        }
-        if(flagcash===0){
-          let inpValue = document.createElement("input");
-          inpValue.type = "number";
-          inpValue.value = recValue;
-          inpValue.className = "newinpval"
-          inpValue.addEventListener("change", updateNewValue);
-          container.appendChild(inpValue);
-        }
+      container.id = `mark - ${index}`;
+      container.className = 'mark-container';
+
+      let textCont = document.createElement("div");
+      textCont.className = "text-container";
+      container.appendChild(textCont);
+
+      let costCont = document.createElement("div");
+      costCont.className = "cost-container";
+      container.appendChild(costCont);          
+       
+      
         if (index === indexEdit){
-          
+           if(flagtxt){
+             if(flagtxt === 1){
           let inpText = document.createElement('input');
           inpText.type = "text";
           inpText.value = recText; 
           inpText.className = "newinptxt"
           inpText.addEventListener('change',updateNewText);
-          container.appendChild(inpText); 
-        
-          
+          textCont.appendChild(inpText); 
+
+          let cash = document.createElement("span");
+          cash.innerText = `${item.value} руб.`;
+          cash.className = "cash-location";          
+          container.appendChild(cash);
+          cash.ondblclick = function(){           
+          indexEdit = index;
+          flagtxt = 2;
+          render();
+          }
+           costCont.appendChild(cash);
+        }else{
           let inpValue = document.createElement("input");
           inpValue.type = "number";
           inpValue.value = recValue;
           inpValue.className = "newinpval"
           inpValue.addEventListener("change", updateNewValue);
-          container.appendChild(inpValue);
+          costCont.appendChild(inpValue);
+
+          let text = document.createElement("p");
+          text.innerText = `${index + 1}) ${item.text}`;
+          text.className = "txt-location";        
+          container.appendChild(text);          
+          text.ondblclick = function(){   
+          indexEdit = index         
+          flagtxt = 1;
+          render()  
+        }
+         textCont.appendChild(text);
+        }
+                    
                
+        }else{
+          let inpText = document.createElement('input');
+          inpText.type = "text";
+          inpText.value = recText; 
+          inpText.className = "newinptxt"
+          inpText.addEventListener('change',updateNewText);
+          textCont.appendChild(inpText); 
+
+          let inpValue = document.createElement("input");
+          inpValue.type = "number";
+          inpValue.value = recValue;
+          inpValue.className = "newinpval"
+          inpValue.addEventListener("change", updateNewValue);
+          costCont.appendChild(inpValue);
+        }
         }else{
           
           let text = document.createElement("p");
           text.innerText = `${index + 1}) ${item.text}`;
           text.className = "txt-location";        
           container.appendChild(text);          
-          text.ondblclick = function(){            
-          flagtxt = 0;            
+          text.ondblclick = function(){ 
+          indexEdit = index;           
+          flagtxt = 1;  
+          render()          
           }
-          
+          textCont.appendChild(text);
+
           let cash = document.createElement("span");
           cash.innerText = `${item.value} руб.`;
           cash.className = "cash-location";          
           container.appendChild(cash);
           cash.ondblclick = function(){           
-          flagcash = 0;           
+          indexEdit = index;           
+          flagtxt = 2;  
+          render()          
+          }   
+          costCont.appendChild(cash);       
           }
-        }
-
-        let imgCont = document.createElement("div");
-        imgCont.className = 'cost-container';
-        container.appendChild(imgCont);
+        
+          let imgCont = document.createElement("div");
+          imgCont.className = 'img-container';
+          container.appendChild(imgCont);
 
 
         if(indexEdit === index){
@@ -154,8 +193,8 @@ render = () =>{
           imageAbort.src = "file:///home/user/Downloads/x-button.svg";
           imageAbort.className = "but";
           imgCont.appendChild(imageAbort);
-          imageAbort.onclick = function(){
-          //indexEdit = index;
+          imageAbort.onclick = function(){            
+          indexEdit = index;
           mainArr[indexEdit].value = recValue;
           mainArr[indexEdit].text = recText;
           indexEdit = -1;
@@ -199,40 +238,40 @@ render = () =>{
       render()
     }
 
-    dbClick = (index) =>{      
-      indexEdit = index;             
-      render()
-    }
-
     updateNewText = (event)=>{
        mainArr[indexEdit].text = event.target.value; 
+       
       //  localStorage.setItem('tasks', JSON.stringify(mainArr));
-       render();
+       //render();
     }
 
     updateNewValue = (event)=>{
       mainArr[indexEdit].value = event.target.value; 
+      
      //  localStorage.setItem('tasks', JSON.stringify(mainArr));
-      render();
+      // render();
    }
     
     saveOnClick = async (index) =>{
+      console.log('yes');
+      const body = {
+        _id: mainArr[indexEdit]._id,
+         text: mainArr[indexEdit].text,
+         value: mainArr[indexEdit].value
+      };
+      indexEdit = null;
+      flagtxt = null;
       const resp = await fetch("http://localhost:8000/updateTask", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
           "Access-Control-Allow-Origin": "*"
         },
-        body: JSON.stringify({
-          _id: mainArr[indexEdit]._id,
-           text: mainArr[indexEdit].text,
-           value: mainArr[indexEdit].value
-        })
+        body: JSON.stringify(body)
       });
-      let result = await resp.json();
-      mainArr = result.data;
-      indexEdit = null;
-     
+      let result = await resp.json();       
+      mainArr = result.data;      
       localStorage.setItem('tasks', JSON.stringify(mainArr));
       render()
     }
+    
