@@ -44,10 +44,7 @@ body{
     align-items: center;
     width: 80%;
     justify-content: space-between;
-    /* border: solid;
-    border-radius: 25px; */
-    margin-bottom: 10px;
-
+     margin-bottom: 10px;
 }
 .mark-container p{
     color: white;
@@ -65,14 +62,14 @@ body{
 }
 
 .lesion{
-    /* background-color: violet; */
+    
     display:flex;
     justify-content: flex-end;
     margin-right: 150px;
     color: deepskyblue;
     font-size: xx-large;
     font-weight: 900;
-    /* width: 400px; */
+   
 }
 .main-div h1{
     font-size: xxx-large;
@@ -118,7 +115,111 @@ input{
     font-size: large; 
 }
 
-/* @media (max-width:320px){
+@media (max-width:850px){
+    .div-value input{
+    /* justify-content: center; */
+        margin-bottom: 20px;
+    }
+  
+    .div-value {
+        display: flex;
+        justify-content: center;
+        flex-direction: column; 
+        
+    }
     
+    .but1{
+        width:40%; 
+    }
+    #content-page {
+        height: 350px;
+        overflow-y: auto;            
+        font-size: large;
+        flex-direction: column;
+        background:rgba(0, 0, 0, 0.3);
+            
+     }
+     .mark-container {
+        display:flex;
+        align-items: center;    
+        justify-content: space-between;
+        margin-bottom: 10px;
     
-    } */
+    }
+    .txt-location {
+        width: 200px;
+        word-wrap: break-word;
+        height: 25px;
+        font-size: large;
+    }
+    .cash-location {
+        width: 200px;
+        word-wrap: break-word;
+        height: 25px;
+        font-size: large;
+    }
+    .but {
+        height: 40px;
+        width: 40px;      
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+@media (max-width:320px){
+    .but1 {
+        width: 60%;
+    }
+    .main-div h1 {
+        font-size: 30px;   
+        font-style: oblique;
+    }
+    .lesion {
+        margin-right: 0px;
+        color: deepskyblue;
+        font-size: x-large;
+        font-weight: 900;
+    }
+    #content-page {
+        
+        height: 520px;
+        overflow-y: auto;
+        display: flex;
+        align-items: center;
+        font-size: large;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.3);
+    }
+    .mark-container{
+        flex-direction: column; 
+    }
+}
+@media (max-width:610px){
+    .main-div h1 {
+        font-size:x-large;  
+        font-style: oblique;
+    }
+    .but1 {
+         width: 80%;
+    }  
+    #content-page {
+        
+        height: 520px;
+        overflow-y: auto;
+        display: flex;
+        align-items: center;
+        font-size: large;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.3);
+    }
+    .mark-container{
+        flex-direction: column; 
+    }   
+    .lesion {
+        margin-right: 0px;
+        color: rgb(5, 7, 8);
+        font-size: xx-large;
+        font-weight: 900;
+    }
+}       
+}
