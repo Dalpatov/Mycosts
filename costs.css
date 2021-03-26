@@ -1,242 +1,242 @@
-body{
-    background-image: url("https://topvoyager.com/wp-content/uploads/2019/10/japan-6-1.jpg");
-    background-size: 100%; 
-    background-position: center;
-    background-size: cover;
-    max-width: 100%;
-    height: 100vh;
+body { 
+  background-image: url("https://topvoyager.com/wp-content/uploads/2019/10/japan-6-1.jpg");
+  background-size: 100%; 
+  background-position: center;
+  background-size: cover;
+  max-width: 100%;
+  height: 100vh;
 }
 
 .main-div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-bottom: 18px;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 18px;  
 }
 
-.div-value{
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin-top: 100px;
-}
-
-#content-page {
-    height: 550px;
-    overflow-y: auto;
-    display: flex;
-    align-items: center;
-    font-size: large;
-    flex-direction: column;
-    background:rgba(0, 0, 0, 0.3);   
-}
-
-.but{
-    height: 40px;
-    width: 40px;
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;  
-}
-
-.mark-container {
-    display:flex;
-    align-items: center;
-    width: 80%;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.mark-container p{
-    color: white;
-}
-
-.cost-container {
-    display:flex;
-    align-items: center;
-    color: white
-}
-
-.img-container {
-    display:flex;
-    align-items: center;
-    color: white
-}
-
-.lesion{   
-    display:flex;
-    justify-content: flex-end;
-    margin-right: 150px;
-    color: deepskyblue;
-    font-size: xx-large;
-    font-weight: 900;
-}
-
-.main-div h1{
-    font-size: xxx-large;
-    font-style : oblique;
-}
-
-#cost-name{
-    font-size: large;  
-}
-
-#cost-value{
-    font-size: large;
-}
-
-.but1{
-    font-size: large;
-    font-style : oblique;
-}
-
-span{
-    color: white;
-}
-
-.txt-location{
-    width: 300px;
-    word-wrap: break-word;
-    height: 25px;
-    font-size: large;   
-}
-
-.cash-location{
-    width: 300px;
-    word-wrap: break-word;
-    height: 25px;
-    font-size: large;   
-}
-
-input{
-    outline:none;
-}
-
-.newinptxt{
-    height: 25px;
-    font-size: large;
-}
-
-.newinpval{
-    height: 25px;
-    font-size: large; 
-}
-
-@media (max-width:850px){
-.div-value input{
-    margin-bottom: 20px;
-}
-  
 .div-value {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;    
- }
-    
-.but1{
-    width:40%; 
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 100px;
 }
 
 #content-page {
-    height: 350px;
-    overflow-y: auto;            
-    font-size: large;
-    flex-direction: column;
-     background:rgba(0, 0, 0, 0.3);        
-}
-
-.mark-container {
-    display:flex;
-    align-items: center;    
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.txt-location {
-     width: 200px;
-    word-wrap: break-word;
-    height: 25px;
-    font-size: large;
-}
-
-.cash-location {
-    width: 200px;
-    word-wrap: break-word;
-    height: 25px;
-    font-size: large;
+  height: 550px;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  font-size: large;
+  flex-direction: column;
+  background:rgba(0, 0, 0, 0.3);   
 }
 
 .but {
-    height: 40px;
-    width: 40px;      
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 40px;
+  width: 40px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
 }
-    
-@media (max-width:320px){
-.but1 {
-    width: 60%;
+
+.mark-container {
+  display:flex;
+  align-items: center;
+  width: 80%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.mark-container p {
+  color: white;
+}
+
+.cost-container {
+  display:flex;
+  align-items: center;
+  color: white
+}
+
+.img-container {
+  display:flex;
+  align-items: center;
+  color: white
+}
+
+.lesion {   
+  display:flex;
+  justify-content: flex-end;
+  margin-right: 150px;
+  color: deepskyblue;
+  font-size: xx-large;
+  font-weight: 900;
 }
 
 .main-div h1 {
-    font-size: 30px;   
-    font-style: oblique;
+  font-size: xxx-large;
+  font-style : oblique;
+}
+
+#cost-name {
+  font-size: large;  
+}
+
+#cost-value {
+  font-size: large;
+}
+
+.but1 {
+  font-size: large;
+  font-style : oblique;
+}
+
+span {
+  color: white;
+}
+
+.txt-location {
+  width: 300px;
+  word-wrap: break-word;
+  height: 25px;
+  font-size: large;   
+}
+
+.cash-location {
+  width: 300px;
+  word-wrap: break-word;
+  height: 25px;
+  font-size: large;   
+}
+
+input {
+  outline:none;
+}
+
+.newinptxt {
+  height: 25px;
+  font-size: large;
+}
+
+.newinpval {
+  height: 25px;
+  font-size: large; 
+}
+
+@media (max-width: 850px) {
+.div-value input {
+  margin-bottom: 20px;
+}
+  
+.div-value {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;    
+ }
+    
+.but1 {
+  width: 40%; 
+}
+
+#content-page {
+  height: 350px;
+  overflow-y: auto;            
+  font-size: large;
+  flex-direction: column;
+  background:rgba(0, 0, 0, 0.3);        
+}
+
+.mark-container {
+  display: flex;
+  align-items: center;    
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.txt-location {
+  width: 200px;
+  word-wrap: break-word;
+  height: 25px;
+  font-size: large;
+}
+
+.cash-location {
+  width: 200px;
+  word-wrap: break-word;
+  height: 25px;
+  font-size: large;
+}
+
+.but {
+  height: 40px;
+  width: 40px;      
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+    
+@media (max-width: 320px) {
+.but1 {
+  width: 60%;
+}
+
+.main-div h1 {
+  font-size: 30px;   
+  font-style: oblique;
 }
 
 .lesion {
-    margin-right: 0px;
-    color: deepskyblue;
-    font-size: x-large;
-    font-weight: 900;
+  margin-right: 0px;
+  color: deepskyblue;
+  font-size: x-large;
+  font-weight: 900;
 }
 
 #content-page {        
-    height: 520px;
-    overflow-y: auto;
-    display: flex;
-    align-items: center;
-    font-size: large;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.3);
+  height: 520px;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  font-size: large;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.3);
  }
 
-.mark-container{
-    flex-direction: column; 
+.mark-container {
+  flex-direction: column; 
 }
 }
 
-@media (max-width:610px){
+@media (max-width:610px) {
 .main-div h1 {
-    font-size:x-large;  
-    font-style: oblique;
+  font-size: x-large;  
+  font-style: oblique;
 }
 
 .but1 {
-    width: 80%;
+  width: 80%;
 }  
 
  #content-page {      
-    height: 520px;
-    overflow-y: auto;
-    display: flex;
-    align-items: center;
-    font-size: large;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.3);
+  height: 520px;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  font-size: large;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.3);
 }
 
-.mark-container{
-    flex-direction: column; 
+.mark-container {
+  flex-direction: column; 
  }   
 
 .lesion {
-    margin-right: 0px;
-    color: rgb(5, 7, 8);
-    font-size: xx-large;
-    font-weight: 900;
+  margin-right: 0px;
+  color: rgb(5, 7, 8);
+  font-size: xx-large;
+  font-weight: 900;
 }
 }       
 }

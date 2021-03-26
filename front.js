@@ -8,16 +8,16 @@ let summCost = 0;
 let flagtxt=null;
 
 window.onload = async function init() {  
-inputText = document.getElementById("cost-name");
-inputText.addEventListener("change", updateText);
-inputValue = document.getElementById("cost-value");
-inputValue.addEventListener("change", updateValue); 
+  inputText = document.getElementById("cost-name");
+  inputText.addEventListener("change", updateText);
+  inputValue = document.getElementById("cost-value");
+  inputValue.addEventListener("change", updateValue); 
 const resp = await fetch("http://localhost:8000/allTasks", {
-method: "GET"
+    method: "GET"
 });
-let result = await resp.json();
+  let result = await resp.json();
 mainArr = result.data;
-render();
+  render();
 }
 
 updateText = (event) => {
@@ -31,35 +31,35 @@ updateValue = (event) => {
 onClick = async ()=>{
   // let dataPole = new Date().toLocaleDateString();
 const resp = await fetch("http://localhost:8000/createTask", {
-method: "POST",
+  method: "POST",
 headers: {
-"Content-Type": "application/json;charset=utf-8",
-"Access-Control-Allow-Origin": "*"
+  "Content-Type": "application/json;charset=utf-8",
+  "Access-Control-Allow-Origin": "*"
 },
-body: JSON.stringify ({
-text: textUP,
-value: valueUP,     
-})   
+  body: JSON.stringify ({
+  text: textUP,
+  value: valueUP,     
+  })   
 });
 let result = await resp.json();
-if(textUP !== "" && textUP !== Number && valueUP !== Number && valueUP !== null) {     
-valueUP = null;
-textUP = "";
-inputText.value = "";
-inputValue.value = null;
-mainArr = result.data; 
-render();
+  if(textUP !== "" && textUP !== Number && valueUP !== Number && valueUP !== null) {     
+  valueUP = null;
+  textUP = "";
+  inputText.value = "";
+  inputValue.value = null;
+  mainArr = result.data; 
+  render();
 } else {
-alert("Ведите данные");
+  alert("Ведите данные");
 }
 }
 
 render = () => {
 mainArr.forEach(i => {
-summCost += Number(i.value);
+  summCost += Number(i.value);
 });        
 let lession = document.querySelector(".lesion");
-lession.innerText = `Итого: ${summCost} руб.`;
+  lession.innerText = `Итого: ${summCost} руб.`;
 let content = document.getElementById("content-page");       
   while(content.firstChild) {                                   
    content.removeChild(content.firstChild);                 
@@ -81,7 +81,7 @@ mainArr.map((item, index) => {
   let costCont = document.createElement("div");
   costCont.className = "cost-container";
   container.appendChild(costCont); 
-           
+
   if (index === indexEdit) {
     if( flagtxt) {
       if (flagtxt === 1) {
