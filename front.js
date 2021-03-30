@@ -1,23 +1,26 @@
 let mainArr = [];
 let textUP = "";
 let valueUP = null;
+let dateUP = null;
+let datefinish = null;
 let inputText = null;
 let inputValue = null;
 let indexEdit = null;
 let summCost = 0;
-let flagtxt=null;
+let flagtxt = null;
 
 window.onload = async function init() {  
   inputText = document.getElementById("cost-name");
   inputText.addEventListener("change", updateText);
   inputValue = document.getElementById("cost-value");
   inputValue.addEventListener("change", updateValue); 
+
 const resp = await fetch("http://localhost:8000/allTasks", {
-    method: "GET"
+  method: "GET"
 });
-  let result = await resp.json();
-mainArr = result.data;
-  render();
+let result = await resp.json();
+  mainArr = result.data;
+render();
 }
 
 updateText = (event) => {
@@ -27,47 +30,53 @@ updateText = (event) => {
 updateValue = (event) => {
   valueUP = event.target.value;
 }
-
-onClick = async ()=>{
-  // let dataPole = new Date().toLocaleDateString();
-const resp = await fetch("http://localhost:8000/createTask", {
-  method: "POST",
-headers: {
-  "Content-Type": "application/json;charset=utf-8",
-  "Access-Control-Allow-Origin": "*"
-},
-  body: JSON.stringify ({
-  text: textUP,
-  value: valueUP,     
+onClick = async () => {
+  const resp = await fetch("http://localhost:8000/createTask", {
+    method: "POST",
+    headers: {
+    "Content-Type": "application/json;charset=utf-8",
+    "Access-Control-Allow-Origin": "*"
+  },
+    body: JSON.stringify({
+      text: textUP,
+      date: datefinish,  
+      value: valueUP,
   })   
-});
+  });
 let result = await resp.json();
   if(textUP !== "" && textUP !== Number && valueUP !== Number && valueUP !== null) {     
-  valueUP = null;
-  textUP = "";
-  inputText.value = "";
-  inputValue.value = null;
-  mainArr = result.data; 
-  render();
-} else {
-  alert("Ведите данные");
-}
+    valueUP = null;
+    textUP = "";
+    inputText.value = "";
+    inputValue.value = null;
+    datefinish = null;
+    mainArr = result.data;
+    render();
+  } else {
+    alert("Ведите данные");
+  }
 }
 
 render = () => {
-mainArr.forEach(i => {
+  mainArr.forEach(i => {
   summCost += Number(i.value);
-});        
+});
+let d = new Date().toLocaleDateString();
+  d2 = d.split("/");
+  d2 = d2[2] + "-" + d2[1] + "-" + d2[0];
+  datefinish = d2;
+ 
 let lession = document.querySelector(".lesion");
-  lession.innerText = `Итого: ${summCost} руб.`;
+lession.innerText = `Итого: ${summCost} руб.`;
 let content = document.getElementById("content-page");       
   while(content.firstChild) {                                   
    content.removeChild(content.firstChild);                 
   }
 mainArr.map((item, index) => {
+  console.log(mainArr)
   let recText = item.text;
-  let recValue = item.value;   
-  let dataPole = new Date().toLocaleDateString();   
+  let recValue = item.value; 
+  let recDate = item.date;
   summCost = 0;
   let container = document.createElement("div");
   container.id = `mark - ${index}`;
@@ -83,7 +92,7 @@ mainArr.map((item, index) => {
   container.appendChild(costCont); 
 
   if (index === indexEdit) {
-    if( flagtxt) {
+    if (flagtxt) {
       if (flagtxt === 1) {
         let inpText = document.createElement('input');
         inpText.type = "text";
@@ -93,23 +102,23 @@ mainArr.map((item, index) => {
         textCont.appendChild(inpText);
 
         let dateP = document.createElement("p");
-        dateP.innerText  = new Date().toLocaleDateString();
+        dateP.innerText  = recDate;
         dateP.className = "dateP-location";        
         container.appendChild(dateP);          
         dateP.ondblclick = function() { 
-        indexEdit = index;           
-        flagtxt = 2;  
-        render()          
+          indexEdit = index;           
+          flagtxt = 2;  
+          render()          
         }
         dataCont.appendChild(dateP);
 
-        let cash = document.createElement("span");
+        let cash = document.createElement("p");
         cash.innerText = `${item.value} руб.`;
         cash.className = "cash-location";          
         container.appendChild(cash);
         cash.ondblclick = function() {           
-        indexEdit = index;
-        flagtxt = 2;
+          indexEdit = index;
+          flagtxt = 2;
         render();
         }
         costCont.appendChild(cash);
@@ -117,9 +126,9 @@ mainArr.map((item, index) => {
       } else if (flagtxt === 3) {
         let dataText = document.createElement('input');
         dataText.type = "date";
-        dataText.value = dataPole; 
+        dataText.value = recDate; 
         dataText.className = "newinpdata";
-        dataText.addEventListener('change',updateNewData);
+        dataText.addEventListener('change',updateNewDate);
         dataCont.appendChild(dataText); 
 
         let text = document.createElement("p");
@@ -127,19 +136,19 @@ mainArr.map((item, index) => {
         text.className = "txt-location";        
         container.appendChild(text);          
         text.ondblclick = function(){   
-        indexEdit = index         
-        flagtxt = 1;
+          indexEdit = index         
+          flagtxt = 1;
         render()  
         }
         textCont.appendChild(text);
 
-        let cash = document.createElement("span");
+        let cash = document.createElement("p");
         cash.innerText = `${item.value} руб.`;
         cash.className = "cash-location";          
         container.appendChild(cash);
         cash.ondblclick = function() {           
-        indexEdit = index;
-        flagtxt = 1;
+          indexEdit = index;
+          flagtxt = 1;
         render();
       }
         costCont.appendChild(cash);  
@@ -157,25 +166,24 @@ mainArr.map((item, index) => {
         text.className = "txt-location";        
         container.appendChild(text);          
         text.ondblclick = function() {   
-        indexEdit = index         
-        flagtxt = 3;
-        render()  
+          indexEdit = index         
+          flagtxt = 3;
+          render()  
         }
         textCont.appendChild(text);
 
         let dateP = document.createElement("p");
-        dateP.innerText  = new Date().toLocaleDateString();
+        dateP.innerText  = recDate;
         dateP.className = "dateP-location";        
         container.appendChild(dateP);          
         dateP.ondblclick = function() { 
-        indexEdit = index;           
-        flagtxt = 3;  
+          indexEdit = index;           
+          flagtxt = 3;  
         render()          
         }
         dataCont.appendChild(dateP);
       }
-   
-    }else{
+    } else {
       let inpText = document.createElement('input');
       inpText.type = "text";
       inpText.value = recText; 
@@ -185,9 +193,9 @@ mainArr.map((item, index) => {
 
       let dataText = document.createElement('input');
       dataText.type = "date";
-      dataText.value = dataPole; 
+      dataText.value = recDate; 
       dataText.className = "newinpdata"
-      dataText.addEventListener('change', updateNewData);
+      dataText.addEventListener('change', updateNewDate);
       dataCont.appendChild(dataText); 
 
       let inpValue = document.createElement("input");
@@ -210,7 +218,7 @@ mainArr.map((item, index) => {
     textCont.appendChild(text);
 
     let dateP = document.createElement("p");
-    dateP.innerText  = new Date().toLocaleDateString();
+    dateP.innerText  = recDate;  
     dateP.className = "dateP-location";        
     container.appendChild(dateP);          
     dateP.ondblclick = function(){ 
@@ -220,7 +228,7 @@ mainArr.map((item, index) => {
     }
     dataCont.appendChild(dateP);
 
-    let cash = document.createElement("span");
+    let cash = document.createElement("p");
     cash.innerText = `${item.value} руб.`;
     cash.className = "cash-location";          
     container.appendChild(cash);
@@ -231,7 +239,7 @@ mainArr.map((item, index) => {
     }   
     costCont.appendChild(cash);       
   }
-      
+   
     let imgCont = document.createElement("div");
     imgCont.className = 'img-container';
     container.appendChild(imgCont);
@@ -253,6 +261,7 @@ mainArr.map((item, index) => {
       indexEdit = index;
       mainArr[indexEdit].value = recValue;
       mainArr[indexEdit].text = recText;
+      mainArr[indexEdit].date = recDate;
       indexEdit = -1;
       render()
   };
@@ -279,12 +288,12 @@ mainArr.map((item, index) => {
 }
 
 delOnClick = async (index) => { 
- let allID = mainArr[index]._id;
- const resp = await fetch(`http://localhost:8000/deleteTask?_id=${allID}`, {
-  method: "DELETE",
- });
- let result = await resp.json();
- mainArr = result.data;
+  let allID = mainArr[index]._id;
+    const resp = await fetch(`http://localhost:8000/deleteTask?_id=${allID}`, {
+      method: "DELETE",
+});
+  let result = await resp.json();
+  mainArr = result.data;
   render(); 
 }
 
@@ -297,24 +306,25 @@ updateNewText = (event)=> {
  mainArr[indexEdit].text = event.target.value; 
 }
 
+updateNewDate = (event)=> {
+  mainArr[indexEdit].date = event.target.value; 
+}
+
 updateNewValue = (event)=>{
  mainArr[indexEdit].value = event.target.value; 
 }
 
-updateNewData = (event)=>{
- mainArr[indexEdit].date = event.target.value; 
-}
     
 saveOnClick = async (index) =>{
- console.log('yes');
  const body = {
   _id: mainArr[indexEdit]._id,
   text: mainArr[indexEdit].text,
-  value: mainArr[indexEdit].value,
-  date: mainArr[indexEdit].date
+  date: mainArr[indexEdit].date,
+  value: mainArr[indexEdit].value, 
  };
  indexEdit = null;
  flagtxt = null;
+ datefinish = null;
  const resp = await fetch("http://localhost:8000/updateTask", {
   method: "PATCH",
   headers: {

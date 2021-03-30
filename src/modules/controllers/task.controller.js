@@ -3,8 +3,9 @@ const Task = require('../../db/models/task/index');
  module.exports.createNewTask = (req, res) => {
   const task = new Task({
     text: req.body.text,
+    date: req.body.date,
     value: req.body.value,
-   
+    
 });
     task.save().then(result => {
       Task.find().then(result => {

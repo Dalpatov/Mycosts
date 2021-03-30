@@ -7,6 +7,11 @@ body {
   height: 100vh;
 }
 
+.dateP-location {
+  width: 100%;
+  margin-right: 100px;
+}
+
 .main-div {
   display: flex;
   align-items: center;
@@ -42,34 +47,53 @@ body {
 }
 
 .mark-container {
+  border-radius: 25px;
   display:flex;
   align-items: center;
-  width: 80%;
+  width: 90%;
   justify-content: space-between;
   margin-bottom: 10px;
+  background:rgba(241, 238, 238, 0.7);
+  padding: 1vh 0;  
 }
 
 .mark-container p {
-  color: white;
+  color: rgb(0, 0, 0);
+  font-size: x-large;
+}
+
+span{
+  font-size: x-large;
+  color: rgb(3, 0, 0);
 }
 
 .cost-container {
+  width: 30%;
   display:flex;
   align-items: center;
-  color: white
+}
+
+.dateP-location {
+  margin-right: 100px;
 }
 
 .img-container {
   display:flex;
   align-items: center;
-  color: white
+  margin-right: 100px;
 }
 
-.lesion {   
-  display:flex;
+.les-class {
+  display: flex;
   justify-content: flex-end;
-  margin-right: 150px;
-  color: deepskyblue;
+}
+
+.lesion {
+  background-color: white;
+  border-radius: 20px;
+  display:flex;
+  justify-content: center;
+  color: black;
   font-size: xx-large;
   font-weight: 900;
 }
@@ -92,26 +116,24 @@ body {
   font-style : oblique;
 }
 
-span {
-  color: white;
+.text-container {
+  width: 30%;
 }
 
 .txt-location {
-  width: 300px;
+  width: 100%;
   word-wrap: break-word;
   height: 25px;
   font-size: large;   
 }
 
 .cash-location {
-  width: 300px;
   word-wrap: break-word;
-  height: 25px;
-  font-size: large;   
+  height: 25px; 
 }
 
 input {
-  outline:none;
+  outline: none;
 }
 
 .newinptxt {
@@ -128,98 +150,115 @@ input {
 .div-value input {
   margin-bottom: 20px;
 }
+
+.text-container p, .dataCont-container p, .cost-container p{
+  font-size: 24px;
+}
+
+.img-container{
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.cost-container{
+  width: 10%;
+}
+
+.dataCont-container{
+  width: 10%;
+}
+
+.text-container {
+  word-wrap: break-word;
+}
+
   
 .div-value {
   display: flex;
   justify-content: center;
-  flex-direction: column;    
  }
-    
+
 .but1 {
   width: 40%; 
 }
 
-#content-page {
+ /* #content-page {
   height: 350px;
   overflow-y: auto;            
   font-size: large;
   flex-direction: column;
   background:rgba(0, 0, 0, 0.3);        
-}
+} */
 
-.mark-container {
+ .mark-container {
   display: flex;
   align-items: center;    
   justify-content: space-between;
   margin-bottom: 10px;
-}
-
-.txt-location {
-  width: 200px;
-  word-wrap: break-word;
-  height: 25px;
-  font-size: large;
-}
-
-.cash-location {
-  width: 200px;
-  word-wrap: break-word;
-  height: 25px;
-  font-size: large;
-}
-
-.but {
-  height: 40px;
-  width: 40px;      
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-    
-@media (max-width: 320px) {
-.but1 {
-  width: 60%;
-}
-
-.main-div h1 {
-  font-size: 30px;   
-  font-style: oblique;
-}
-
-.lesion {
-  margin-right: 0px;
-  color: deepskyblue;
-  font-size: x-large;
-  font-weight: 900;
-}
+} 
 
 #content-page {        
-  height: 520px;
-  overflow-y: auto;
+  height: 300px;
+  /* overflow-y: auto;
   display: flex;
   align-items: center;
   font-size: large;
-  flex-direction: column;
+  flex-direction: column; */
   background: rgba(0, 0, 0, 0.3);
- }
+ } 
 
-.mark-container {
-  flex-direction: column; 
-}
-}
+} 
 
-@media (max-width:610px) {
+@media (max-width: 610px) {
 .main-div h1 {
   font-size: x-large;  
   font-style: oblique;
+}
+
+.txt-location { 
+  margin-bottom: 0px;
+}
+
+.text-container p, .dataCont-container p, .cost-container p{
+  font-size: 33px;
+  display: flex;
+  justify-content: center;
+}
+
+.text-container, .dataCont-container, .cost-container {
+display: flex;
+width: 100%;
+justify-content: center;
+}
+
+.dateP-location{
+  margin: 4vh 0;
+}
+
+.img-container{
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+
+.cash-location{
+  margin: 2vh 0;
+}
+
+.but {
+margin: 2vh 0;
+  width: 70px;
+  height: 70px;
 }
 
 .but1 {
   width: 80%;
 }  
 
- #content-page {      
-  height: 520px;
+#content-page {     
+  
+  height: 500px;
   overflow-y: auto;
   display: flex;
   align-items: center;
@@ -230,13 +269,14 @@ input {
 
 .mark-container {
   flex-direction: column; 
- }   
+}   
 
-.lesion {
-  margin-right: 0px;
+/* .lesion {
+  width: 60%;
+  margin-left: 0%;
   color: rgb(5, 7, 8);
   font-size: xx-large;
   font-weight: 900;
-}
+} */
 }       
-}
+
