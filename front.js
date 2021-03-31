@@ -59,19 +59,19 @@ let result = await resp.json();
 
 render = () => {
   mainArr.forEach(i => {
-  summCost += Number(i.value);
-});
-let d = new Date().toLocaleDateString();
+    summCost += Number(i.value);
+  });
+  let d = new Date().toLocaleDateString();
   d2 = d.split("/");
   d2 = d2[2] + "-" + d2[1] + "-" + d2[0];
   datefinish = d2;
  
-let lession = document.querySelector(".lesion");
-lession.innerText = `Итого: ${summCost} руб.`;
-let content = document.getElementById("content-page");       
-  while(content.firstChild) {                                   
-   content.removeChild(content.firstChild);                 
-  }
+  let lession = document.querySelector(".lesion");
+  lession.innerText = `Итого: ${summCost} руб.`;
+  let content = document.getElementById("content-page");       
+    while(content.firstChild) {                                   
+      content.removeChild(content.firstChild);                 
+    }
 mainArr.map((item, index) => {
   console.log(mainArr)
   let recText = item.text;

@@ -151,21 +151,21 @@ input {
   margin-bottom: 20px;
 }
 
-.text-container p, .dataCont-container p, .cost-container p{
+.text-container p, .dataCont-container p, .cost-container p {
   font-size: 24px;
 }
 
-.img-container{
+.img-container {
   display: flex;
   justify-content: center;
   margin: 0;
 }
 
-.cost-container{
+.cost-container {
   width: 10%;
 }
 
-.dataCont-container{
+.dataCont-container {
   width: 10%;
 }
 
@@ -173,7 +173,6 @@ input {
   word-wrap: break-word;
 }
 
-  
 .div-value {
   display: flex;
   justify-content: center;
@@ -183,15 +182,7 @@ input {
   width: 40%; 
 }
 
- /* #content-page {
-  height: 350px;
-  overflow-y: auto;            
-  font-size: large;
-  flex-direction: column;
-  background:rgba(0, 0, 0, 0.3);        
-} */
-
- .mark-container {
+.mark-container {
   display: flex;
   align-items: center;    
   justify-content: space-between;
@@ -200,14 +191,8 @@ input {
 
 #content-page {        
   height: 300px;
-  /* overflow-y: auto;
-  display: flex;
-  align-items: center;
-  font-size: large;
-  flex-direction: column; */
   background: rgba(0, 0, 0, 0.3);
  } 
-
 } 
 
 @media (max-width: 610px) {
@@ -220,34 +205,34 @@ input {
   margin-bottom: 0px;
 }
 
-.text-container p, .dataCont-container p, .cost-container p{
+.text-container p, .dataCont-container p, .cost-container p {
   font-size: 33px;
   display: flex;
   justify-content: center;
 }
 
 .text-container, .dataCont-container, .cost-container {
-display: flex;
-width: 100%;
-justify-content: center;
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
-.dateP-location{
+.dateP-location {
   margin: 4vh 0;
 }
 
-.img-container{
+.img-container {
   display: flex;
   width: 70%;
   justify-content: space-between;
 }
 
-.cash-location{
+.cash-location {
   margin: 2vh 0;
 }
 
 .but {
-margin: 2vh 0;
+  margin: 2vh 0;
   width: 70px;
   height: 70px;
 }
@@ -257,7 +242,6 @@ margin: 2vh 0;
 }  
 
 #content-page {     
-  
   height: 500px;
   overflow-y: auto;
   display: flex;
@@ -270,13 +254,5 @@ margin: 2vh 0;
 .mark-container {
   flex-direction: column; 
 }   
-
-/* .lesion {
-  width: 60%;
-  margin-left: 0%;
-  color: rgb(5, 7, 8);
-  font-size: xx-large;
-  font-weight: 900;
-} */
 }       
 
