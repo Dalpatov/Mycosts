@@ -34,7 +34,7 @@ body {
   align-items: center;
   font-size: large;
   flex-direction: column;
-  background:rgba(0, 0, 0, 0.3);   
+  background: rgba(0, 0, 0, 0.3);   
 }
 
 .but {
@@ -48,12 +48,12 @@ body {
 
 .mark-container { 
   border-radius: 25px;
-  display:flex;
+  display: flex;
   align-items: center;
   width: 90%;
   justify-content: space-between;
   margin-bottom: 10px;
-  background:rgba(241, 238, 238, 0.7);
+  background: rgba(241, 238, 238, 0.7);
   padding: 1vh 0;  
 }
 
@@ -69,7 +69,7 @@ span{
 
 .cost-container {
   width: 30%;
-  display:flex;
+  display: flex;
   align-items: center;
 }
 
@@ -78,7 +78,7 @@ span{
 }
 
 .img-container {
-  display:flex;
+  display: flex;
   align-items: center;
   margin-right: 100px;
 }
@@ -91,7 +91,7 @@ span{
 .lesion {
   background-color: white;
   border-radius: 20px;
-  display:flex;
+  display: flex;
   justify-content: center;
   color: black;
   font-size: xx-large;
@@ -144,117 +144,123 @@ input {
 }
 
 @media (max-width: 850px) {
-.div-value input {
-  margin-bottom: 20px;
-}
+  .div-value input {
+    margin-bottom: 20px;
+  }
 
-.newinptxt {
-  width: 12vh;
-}
+  .newinptxt {
+    width: 12vh;
+  }
 
-.newinpval {
-  width: 80%;
-}
+  .newinpval {
+    width: 80%;
+  }
 
-.newinpdata {
-  width: 80%;
-}
+  .newinpdata {
+    width: 80%;
+  }
 
-.text-container p, .dataCont-container p, .cost-container p {
-  font-size: 24px;
-}
+  .text-container p, 
+  .dataCont-container p, 
+  .cost-container p {
+    font-size: 24px;
+  }
 
-.img-container {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-}
+  .img-container {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
 
-.text-container {
-  width: 40%;
-}
+  .text-container {
+    width: 40%;
+  }
 
-.text-container {
-  word-wrap: break-word;
-}
+  .text-container {
+    word-wrap: break-word;
+  }
 
-.div-value {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+  .div-value {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
 
-.but1 {
-  width: 40%; 
-}
+  .but1 {
+    width: 40%; 
+  }
 
-.mark-container {
-  display: flex;
-  align-items: center;    
-  justify-content: space-between;
-  margin-bottom: 10px;
-} 
+  .mark-container {
+    display: flex;
+    align-items: center;    
+    justify-content: space-between;
+    margin-bottom: 10px;
+  } 
 
-#content-page {        
-  height: 300px;
-  background: rgba(0, 0, 0, 0.3);
-} 
+  #content-page {        
+    height: 300px;
+    background: rgba(0, 0, 0, 0.3);
+  } 
 } 
 
 @media (max-width: 610px) {
-.main-div h1 {
-  font-size: x-large;  
-  font-style: oblique;
-}
+  .main-div h1 {
+    font-size: x-large;  
+    font-style: oblique;
+  }
 
-.text-container p, .dataCont-container p, .cost-container p {
-  font-size: 33px;
-  display: flex;
-  justify-content: center;
-}
+  .text-container p, 
+  .dataCont-container p, 
+  .cost-container p {
+    font-size: 33px;
+    display: flex;
+    justify-content: center;
+  }
 
-.text-container, .dataCont-container, .cost-container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
+  .text-container, 
+  .dataCont-container, 
+  .cost-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
 
-.dateP-location {
-  margin: 4vh 0;
-}
+  .dateP-location {
+    margin: 4vh 0;
+  }
 
-.img-container {
-  display: flex;
-  width: 70%;
-  justify-content: space-between;
-}
+  .img-container {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+  }
 
-.cash-location {
-  margin: 2vh 0;
-}
+  .cash-location {
+    margin: 2vh 0;
+  }
 
-.but {
-  margin: 2vh 0;
-  width: 70px;
-  height: 70px;
-}
+  .but {
+    margin: 2vh 0;
+    width: 70px;
+    height: 70px;
+  }
 
-.but1 {
-  width: 80%;
-}  
+  .but1 {
+    width: 80%;
+  }  
 
-#content-page {     
-  height: 500px;
-  overflow-y: auto;
-  display: flex;
-  align-items: center;
-  font-size: large;
-  flex-direction: column;
-  background: rgba(0, 0, 0, 0.3);
-}
+  #content-page {     
+    height: 500px;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    font-size: large;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.3);
+  }
 
-.mark-container {
-  flex-direction: column; 
-}   
+  .mark-container {
+    flex-direction: column; 
+  }   
 }       
 

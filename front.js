@@ -63,7 +63,7 @@ render = () => {
   });
   let d = new Date().toLocaleDateString();
   d2 = d.split("/");
-    if(d[0]<10){
+    if(d[0] < 10) {
       d2 = d2[2] + "-"+ 0 + d2[0] + "-" + d2[1];
     } else {
       d2 = d2[2] + "-" + d2[0] + "-" + d2[1];
@@ -320,11 +320,12 @@ updateNewValue = (event)=>{
 
     
 saveOnClick = async (index) =>{
- const body = {
-  _id: mainArr[indexEdit]._id,
-  text: mainArr[indexEdit].text,
-  date: mainArr[indexEdit].date,
-  value: mainArr[indexEdit].value, 
+  const {_id, text, date, value} = mainArr[indexEdit];
+  const body = {
+    _id: _id,
+    text: text,
+    date: date,
+    value: value, 
  };
  indexEdit = null;
  flagtxt = null;

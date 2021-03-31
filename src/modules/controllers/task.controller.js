@@ -19,16 +19,13 @@ module.exports.deleteTask = (req, res) => {
     });
   });
 }
-
   module.exports.changeTaskInfo = (req, res) => {
     Task.updateOne({_id: req.body._id}, req.body).then(result => {
        Task.find().then(result => {
         res.send({data:result});
-
     });     
   });
 };
-
   module.exports.getAllTasks = (req, res) => {
     Task.find().then(result => {
       res.send({data:result});
