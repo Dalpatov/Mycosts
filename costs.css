@@ -151,6 +151,18 @@ input {
   margin-bottom: 20px;
 }
 
+.newinptxt {
+  width: 12vh;
+}
+
+.newinpval {
+  width: 80%;
+}
+
+.newinpdata {
+  width: 80%;
+}
+
 .text-container p, .dataCont-container p, .cost-container p {
   font-size: 24px;
 }
@@ -161,13 +173,17 @@ input {
   margin: 0;
 }
 
-.cost-container {
-  width: 10%;
+.text-container {
+  width: 40%;
 }
 
-.dataCont-container {
+/* .cost-container {
   width: 10%;
-}
+} */
+
+/* .dataCont-container {
+  width: 10%;
+} */
 
 .text-container {
   word-wrap: break-word;
@@ -176,6 +192,7 @@ input {
 .div-value {
   display: flex;
   justify-content: center;
+  flex-direction: column;
  }
 
 .but1 {
@@ -199,10 +216,6 @@ input {
 .main-div h1 {
   font-size: x-large;  
   font-style: oblique;
-}
-
-.txt-location { 
-  margin-bottom: 0px;
 }
 
 .text-container p, .dataCont-container p, .cost-container p {
