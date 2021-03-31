@@ -53,7 +53,7 @@ let result = await resp.json();
     mainArr = result.data;
     render();
   } else {
-    alert("Ведите данные");
+      alert("Ведите данные");
   }
 }
 
@@ -63,7 +63,11 @@ render = () => {
   });
   let d = new Date().toLocaleDateString();
   d2 = d.split("/");
-  d2 = d2[2] + "-" + d2[1] + "-" + d2[0];
+    if(d[0]<10){
+      d2 = d2[2] + "-"+ 0 + d2[0] + "-" + d2[1];
+    } else {
+      d2 = d2[2] + "-" + d2[0] + "-" + d2[1];
+    }
   datefinish = d2;
  
   let lession = document.querySelector(".lesion");
@@ -289,9 +293,9 @@ mainArr.map((item, index) => {
 
 delOnClick = async (index) => { 
   let allID = mainArr[index]._id;
-    const resp = await fetch(`http://localhost:8000/deleteTask?_id=${allID}`, {
-      method: "DELETE",
-});
+  const resp = await fetch(`http://localhost:8000/deleteTask?_id=${allID}`, {
+    method: "DELETE",
+  });
   let result = await resp.json();
   mainArr = result.data;
   render(); 

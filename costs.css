@@ -46,7 +46,7 @@ body {
   justify-content: center;  
 }
 
-.mark-container {
+.mark-container { 
   border-radius: 25px;
   display:flex;
   align-items: center;
@@ -103,14 +103,6 @@ span{
   font-style : oblique;
 }
 
-#cost-name {
-  font-size: large;  
-}
-
-#cost-value {
-  font-size: large;
-}
-
 .but1 {
   font-size: large;
   font-style : oblique;
@@ -125,6 +117,7 @@ span{
   word-wrap: break-word;
   height: 25px;
   font-size: large;   
+  margin-left: 15px;
 }
 
 .cash-location {
@@ -144,6 +137,10 @@ input {
 .newinpval {
   height: 25px;
   font-size: large; 
+}
+
+.div-value input {
+  font-size: 30px;
 }
 
 @media (max-width: 850px) {
@@ -177,14 +174,6 @@ input {
   width: 40%;
 }
 
-/* .cost-container {
-  width: 10%;
-} */
-
-/* .dataCont-container {
-  width: 10%;
-} */
-
 .text-container {
   word-wrap: break-word;
 }
@@ -193,7 +182,7 @@ input {
   display: flex;
   justify-content: center;
   flex-direction: column;
- }
+}
 
 .but1 {
   width: 40%; 
@@ -209,7 +198,7 @@ input {
 #content-page {        
   height: 300px;
   background: rgba(0, 0, 0, 0.3);
- } 
+} 
 } 
 
 @media (max-width: 610px) {
