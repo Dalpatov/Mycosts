@@ -320,12 +320,17 @@ updateNewValue = (event)=>{
 
     
 saveOnClick = async (index) =>{
-  const {_id, text, date, value} = mainArr[indexEdit];
+  const {
+    _id, 
+    text, 
+    date, 
+    value
+  } = mainArr[indexEdit];
   const body = {
-    _id: _id,
-    text: text,
-    date: date,
-    value: value, 
+    _id,
+    text,
+    date,
+    value, 
  };
  indexEdit = null;
  flagtxt = null;
