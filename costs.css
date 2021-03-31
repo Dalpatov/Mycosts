@@ -1,42 +1,260 @@
-body{
-    background-image: url("https://regnum.ru/uploads/pictures/news/2018/10/03/regnum_picture_15385669132464517_normal.png")
+body { 
+  background-image: url("https://topvoyager.com/wp-content/uploads/2019/10/japan-6-1.jpg");
+  background-size: 100%; 
+  background-position: center;
+  background-size: cover;
+  max-width: 100%;
+  height: 100vh;
 }
+
+.dateP-location {
+  width: 100%;
+  margin-right: 100px;
+}
+
 .main-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 18px;  
+}
+
+.div-value {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 100px;
+}
+
+#content-page {
+  height: 550px;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  font-size: large;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.3);   
+}
+
+.but {
+  height: 40px;
+  width: 40px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+.mark-container { 
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  background: rgba(241, 238, 238, 0.7);
+  padding: 1vh 0;  
+}
+
+.mark-container p {
+  color: rgb(0, 0, 0);
+  font-size: x-large;
+}
+
+span{
+  font-size: x-large;
+  color: rgb(3, 0, 0);
+}
+
+.cost-container {
+  width: 30%;
+  display: flex;
+  align-items: center;
+}
+
+.dateP-location {
+  margin-right: 100px;
+}
+
+.img-container {
+  display: flex;
+  align-items: center;
+  margin-right: 100px;
+}
+
+.les-class {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.lesion {
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-size: xx-large;
+  font-weight: 900;
+}
+
+.main-div h1 {
+  font-size: xxx-large;
+  font-style : oblique;
+}
+
+.but1 {
+  font-size: large;
+  font-style : oblique;
+}
+
+.text-container {
+  width: 30%;
+}
+
+.txt-location {
+  width: 100%;
+  word-wrap: break-word;
+  height: 25px;
+  font-size: large;   
+  margin-left: 15px;
+}
+
+.cash-location {
+  word-wrap: break-word;
+  height: 25px; 
+}
+
+input {
+  outline: none;
+}
+
+.newinptxt {
+  height: 25px;
+  font-size: large;
+}
+
+.newinpval {
+  height: 25px;
+  font-size: large; 
+}
+
+.div-value input {
+  font-size: 30px;
+}
+
+@media (max-width: 850px) {
+  .div-value input {
+    margin-bottom: 20px;
+  }
+
+  .newinptxt {
+    width: 12vh;
+  }
+
+  .newinpval {
+    width: 80%;
+  }
+
+  .newinpdata {
+    width: 80%;
+  }
+
+  .text-container p, 
+  .dataCont-container p, 
+  .cost-container p {
+    font-size: 24px;
+  }
+
+  .img-container {
     display: flex;
-    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .text-container {
+    width: 100%;
+  }
+
+  .text-container {
+    word-wrap: break-word;
+  }
+
+  .div-value {
+    display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 18px;
-}
-#content-page {
+  }
+
+  .but1 {
+    width: 40%; 
+  }
+
+  .mark-container {
+    display: flex;
+    align-items: center;    
+    justify-content: space-between;
+    margin-bottom: 10px;
+  } 
+
+  #content-page {        
+    height: 300px;
+    background: rgba(0, 0, 0, 0.3);
+  } 
+} 
+
+@media (max-width: 610px) {
+  .main-div h1 {
+    font-size: x-large;  
+    font-style: oblique;
+  }
+
+  .text-container p, 
+  .dataCont-container p, 
+  .cost-container p {
+    
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+  } 
+
+  .dateP-location {
+    margin: 4vh 0;
+  }
+
+  .img-container {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+  }
+
+  .cash-location {
+    margin: 2vh 0;
+  }
+
+  .but {
+    margin: 2vh 0;
+    width: 70px;
+    height: 70px;
+  }
+
+  .but1 {
+    width: 80%;
+  }  
+
+  #content-page {     
+    height: 500px;
+    overflow-y: auto;
     display: flex;
     align-items: center;
-   
-    flex-direction: column
-}
-.but{
-    height: 20px;
-    width: 20px;
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;  
-}
-.mark-container {
-    display:flex;
-    align-items: center;
-}
-.cost-container {
-    display:flex;
-    align-items: center;
-}
-.cost-container p {
-     justify-content: center;
-}
+    font-size: large;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.3);
+  }
 
-.lesion{
-    display:flex;
-    justify-content: flex-end;
-    margin-right: 150px;
+  .mark-container {
+    flex-direction: column; 
+  }   
+}       
 
-}
